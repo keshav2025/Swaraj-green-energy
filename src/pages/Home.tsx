@@ -1,6 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Clock, Shield, Users, Wrench, Phone, MessageCircle } from 'lucide-react';
+import TYRESEALANT from '../assets/TYRESEALANT.jpg';
+import breakshoes from '../assets/breakshoes.jpg';
+import BREAKPads from '../assets/BREAKPAD.jpg';
+import airfilter from '../assets/airfilter.jpeg';
+import breakshoes2 from '../assets/breakshoes2.jpeg';
+import breakshoes1 from '../assets/breakshoes1.jpeg';
+import engineoil from '../assets/engineoil.jpeg';
+import mencholine from '../assets/mencholinTyresealtant.jpeg'
+import tyresealant02 from '../assets/TYRE SEALANT02.jpeg'
+import tyresealant01 from '../assets/tyresealant01.jpeg'
+import mewtyresealantbox from '../assets/mewTYRESEALANTbox.jpeg'
+import typesealant from '../assets/typesealant.jpeg'
+
+import airfilter0 from '../assets/airfilter0.jpeg'
+import tyresealantforbike from '../assets/tyre sealantfor caramdbike.jpeg'
+import bulksealant from '../assets/bulksealant.jpeg'
+import frontforkoil from '../assets/frontforkoil.jpeg'
+import shops from '../assets/shop.jpeg'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation , Autoplay } from 'swiper/modules';
+
+
+import  fstrocket from '../assets/fstroke-engineoil.jpeg' ;
+import sgesealant from '../assets/sgesealant.jpeg' ;
+import sgeairfilter from '../assets/sgeairfilter.jpeg' ;
+import clutchplat from '../assets/cluthplat.jpeg' ;
+import sgebreakshoe from '../assets/sgebrakeshoe01.jpeg' ;
+import n1 from '../assets/WhatsApp Image 2025-06-16 at 23.12.14.jpeg' ;
+import n2 from '../assets/WhatsApp Image 2025-06-16 at 23.14.56.jpeg' ;
+import n3 from '../assets/WhatsApp Image 2025-06-18 at 17.43.21.jpeg' ;
+import n4 from '../assets/WhatsApp Image 2025-06-18 at 17.43.23.jpeg' ;
+import n5 from '../assets/WhatsApp Image 2025-06-18 at 17.43.26 (1).jpeg' ;
+import n6 from '../assets/WhatsApp Image 2025-06-18 at 17.43.28.jpeg' ;
+import n7 from '../assets/WhatsApp Image 2025-06-20 at 01.34.05.jpeg' ;
+import n8 from '../assets/WhatsApp Image 2025-06-20 at 01.35.12.jpeg' ;
+
+
+
+
+
+
+
+
+
 
 function Home() {
   const features = [
@@ -37,6 +83,28 @@ function Home() {
 
   const whatsappNumber = "918789574430";
   const whatsappMessage = "Hi! I'm interested in bike parts from Swaraj Green Energy. Please provide more information.";
+
+  const galleryImages = [
+    { src: fstrocket, title: 'FST ROCKET', category: 'Maintenance' },
+    { src: breakshoes, title: 'Break Shoes', category: 'Brake System' },
+    { src: BREAKPads, title: 'Break Pads', category: 'Brake System' },
+    { src: sgeairfilter, title: ' AIR FILTER', category: 'Engine' },
+    { src: clutchplat, title: 'CLUTCH PLAT', category: 'Brake System' },
+    { src:  sgebreakshoe, title: 'Break Shoes', category: 'Brake System' },
+    { src: n1, title: 'Engine Oil', category: 'Lubricants' },
+    { src: n2, title: 'Our shop', category: 'shop' },
+    { src:  sgesealant, title: 'SG SEALANT', category: 'Maintenance' },
+    { src: n3, title: 'Tyre Sealant', category: 'Maintenance' },
+    { src: n4, title: 'Tyre Sealant Box', category: 'Maintenance' },
+    { src: n5, title: 'Type Sealant', category: 'Maintenance' },
+    { src: airfilter0, title: 'Air Filter', category: 'Engine' },
+    { src: n6, title: 'Tyre Sealant for Car & Bike', category: 'Maintenance' },
+    { src: bulksealant, title: 'Bulk Sealant', category: 'Maintenance' },
+    { src: n8, title: 'Tyre Sealant', category: 'Maintenance' },
+    { src: n7, title: 'clutch plate', category: 'Brake System' },
+    // Placeholder images to reach 24 total
+   
+  ];
 
   return (
     <div>
@@ -196,6 +264,44 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Our Products Gallery Section */}
+      <Swiper
+  modules={[Navigation, Autoplay]}
+  navigation
+  autoplay={{
+    delay: 1000,       // 3 seconds per slide
+    disableOnInteraction: false,
+  }}
+  spaceBetween={20}
+  breakpoints={{
+    640: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+    1280: { slidesPerView: 4 },
+  }}
+>
+  {galleryImages.map((image, index) => (
+    <SwiperSlide key={index}>
+      <div className="group mb-5 relative overflow-hidden rounded-lg shadow-lg bg-white">
+        <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center">
+          <img
+            src={image.src}
+            alt={image.title}
+            className="w-full h-full object-contain bg-white p-2 transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-500 flex items-center justify-center">
+          <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+            <p className="text-white text-center font-semibold text-lg">{image.title}</p>
+            <p className="text-green-300 text-sm text-center">{image.category}</p>
+          </div>
+        </div>
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
 
       {/* CTA Section */}
       <section className="py-16 bg-green-600 text-white">

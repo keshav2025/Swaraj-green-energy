@@ -11,9 +11,13 @@ function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const whatsappNumber = "918789574430";
   const whatsappMessage = "Hi! I'd like to get in touch with Swaraj Green Energy regarding bike parts.";
+
+  // Google Sheets script URL
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbx4WoiAlE088X6Tp2kzPNjrjCkyMd93HA93CYtFIS4V8nC3l2eHXRY5eUNsYX9YLzY/exec';
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -42,23 +46,52 @@ function Contact() {
     if (!validateForm()) {
       return;
     }
-
+  
     setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError('');
+  
+    try {
+      // Create URL-encoded form data
+      const formPayload = new URLSearchParams();
+      formPayload.append('name', formData.name);
+      formPayload.append('email', formData.email);
+      formPayload.append('message', formData.message);
+      formPayload.append('timestamp', new Date().toISOString());
+  
+      // First try POST request
+      let response = await fetch(scriptUrl, {
+        method: 'POST',
+        body: formPayload,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+  
+      // If POST fails, try GET as fallback
+      if (!response.ok) {
+        const getUrl = `${scriptUrl}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&message=${encodeURIComponent(formData.message)}`;
+        response = await fetch(getUrl, {
+          method: 'GET',
+          mode: 'no-cors',
+        });
+      }
+  
       setIsSubmitted(true);
-      
-      // Reset form
       setFormData({
         name: '',
         email: '',
         message: '',
       });
-    }, 2000);
+  
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitError('Failed to submit form. Please try again later or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
+  // ... (rest of your component remains the same)
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -274,6 +307,13 @@ function Contact() {
                       </>
                     )}
                   </button>
+
+                  {submitError && (
+                    <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-lg flex items-center">
+                      <AlertCircle className="h-5 w-5 mr-2" />
+                      {submitError}
+                    </div>
+                  )}
                 </form>
               )}
             </div>

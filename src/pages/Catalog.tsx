@@ -1,57 +1,74 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Search, MessageCircle } from 'lucide-react';
+import breakshoes from '../assets/sgebrakeshoe01.jpeg'
+import TYRESEALANT from '../assets/sgesealant.jpeg';
+import BREAKPads from '../assets/discbreakpad.jpeg';
+
+
+import n1 from '../assets/WhatsApp Image 2025-06-25 at 00.23.29.jpeg' ;
+import n2 from '../assets/WhatsApp Image 2025-06-16 at 23.14.56.jpeg' ;
+import n3 from '../assets/WhatsApp Image 2025-06-18 at 17.43.21.jpeg' ;
+import n4 from '../assets/WhatsApp Image 2025-06-18 at 17.43.23.jpeg' ;
+import n5 from '../assets/WhatsApp Image 2025-06-18 at 17.43.26 (1).jpeg' ;
+import n6 from '../assets/WhatsApp Image 2025-06-18 at 17.43.28.jpeg' ;
+import n7 from '../assets/WhatsApp Image 2025-06-20 at 01.34.05.jpeg' ;
+import n8 from '../assets/WhatsApp Image 2025-06-20 at 01.35.12.jpeg' ;
+
+
 
 function Catalog() {
   const whatsappNumber = "918789574430";
 
   const categories = [
     {
-      name: 'Engine Parts',
+      name: 'TYRE SEALANT',
       description: 'High-performance engine components including pistons, cylinders, valves, and gaskets.',
-      image: 'https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: TYRESEALANT,
       parts: ['Pistons', 'Cylinders', 'Valves', 'Gaskets', 'Crankshafts', 'Connecting Rods'],
     },
     {
-      name: 'Brake System',
-      description: 'Complete brake solutions including pads, discs, calipers, and brake fluids.',
-      image: 'https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=400',
+      name: 'BRAKE SHOES',
+      description: 'Reliable brake shoes for smooth, safe stopping—upgrade your ride today!" Let me know if you had like a different style or tone!',
+      image: breakshoes,
       parts: ['Brake Pads', 'Brake Discs', 'Calipers', 'Brake Lines', 'Master Cylinders', 'Brake Fluids'],
     },
     {
-      name: 'Suspension',
-      description: 'Suspension components for smooth and comfortable rides including shocks and springs.',
-      image: 'https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=400',
-      parts: ['Shock Absorbers', 'Springs', 'Fork Seals', 'Swing Arms', 'Bearings', 'Bushings'],
+      name: 'DISC BRAKE PADS',
+      
+      description: 'High-quality brake pads for enhanced stopping power and safety.',
+      image: BREAKPads,
+      parts: ['Front Brake Pads', 'Rear Brake Pads', 'Sintered Pads', 'Organic Pads', 'Ceramic Pads', 'Racing Pads'],
     },
     {
-      name: 'Electrical Parts',
-      description: 'Electrical components including batteries, ignition systems, and lighting solutions.',
-      image: 'https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=400',
-      parts: ['Batteries', 'Spark Plugs', 'Ignition Coils', 'Wiring Harness', 'Alternators', 'Starters'],
+      name: '4 Stroke Engine oil',
+      description: 'Premium 4-stroke engine oil for optimal performance and protection.',
+      image: n1,
+      parts: ['Engine Oil', 'Oil Filters', 'Air Filters', 'Fuel Filters', 'Coolant', 'Lubricants'],
+    
     },
     {
       name: 'Body Parts',
       description: 'External body components including fairings, fenders, and protective gear.',
-      image: 'https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: n2,
       parts: ['Fairings', 'Fenders', 'Fuel Tanks', 'Side Panels', 'Windshields', 'Mirrors'],
     },
     {
       name: 'Lighting System',
       description: 'Complete lighting solutions including headlights, taillights, and indicators.',
-      image: 'https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: n3,
       parts: ['Headlights', 'Taillights', 'Turn Signals', 'LED Strips', 'Bulbs', 'Light Housings'],
     },
     {
       name: 'Transmission',
       description: 'Transmission components including clutches, gears, and drive chains.',
-      image: 'https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: n4,
       parts: ['Clutch Plates', 'Gears', 'Drive Chains', 'Sprockets', 'Transmission Oil', 'Shift Forks'],
     },
     {
       name: 'Exhaust System',
       description: 'Performance exhaust systems and components for optimal engine performance.',
-      image: 'https://images.pexels.com/photos/190537/pexels-photo-190537.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: n5,
       parts: ['Exhaust Pipes', 'Mufflers', 'Heat Shields', 'Gaskets', 'Clamps', 'Catalytic Converters'],
     },
   ];
@@ -105,15 +122,16 @@ function Catalog() {
             {categories.map((category, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden bg-black/5">
                   <img
                     src={category.image}
                     alt={category.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full transition-all duration-500 object-cover group-hover:object-contain group-hover:bg-black/80 transform scale-110 group-hover:scale-100"
+                    style={{ backgroundColor: 'rgba(0,0,0,0.1)' }}
                   />
-                  <div className="absolute inset-0 bg-black/20"></div>
+                  <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors"></div>
                 </div>
                 
                 <div className="p-6">

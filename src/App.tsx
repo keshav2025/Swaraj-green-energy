@@ -8,10 +8,12 @@ import Catalog from './pages/Catalog';
 import Inquiry from './pages/Inquiry';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
+import ScrollToTop from './pages/ScrollToTop'; // 👈 import this
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* 👈 insert here */}
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <Header />
         <main className="flex-grow">

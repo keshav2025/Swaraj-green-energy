@@ -1,40 +1,29 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle, MessageCircle } from 'lucide-react';
 
 function Inquiry() {
-  const location = useLocation();
-  const selectedCategory = location.state?.category || '';
-
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
-    phone: '',
-    category: selectedCategory,
     message: '',
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const categories = [
-    'Engine Parts',
-    'Brake System',
-    'Suspension',
-    'Electrical Parts',
-    'Body Parts',
-    'Lighting System',
-    'Transmission',
-    'Exhaust System',
-    'Other (Please specify in message)',
-  ];
+  const whatsappNumber = "918789574430";
+  const whatsappMessage = "Hi! I'd like to get in touch with Swaraj Green Energy regarding bike parts.";
+
+  // Google Sheets script URL
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbx4WoiAlE088X6Tp2kzPNjrjCkyMd93HA93CYtFIS4V8nC3l2eHXRY5eUNsYX9YLzY/exec';
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = 'Full name is required';
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
     }
 
     if (!formData.email.trim()) {
@@ -43,18 +32,8 @@ function Inquiry() {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^[+]?[\d\s-()]+$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
-    }
-
-    if (!formData.category) {
-      newErrors.category = 'Please select a category';
-    }
-
     if (!formData.message.trim()) {
-      newErrors.message = 'Please provide details about your inquiry';
+      newErrors.message = 'Message is required';
     }
 
     setErrors(newErrors);
@@ -67,27 +46,54 @@ function Inquiry() {
     if (!validateForm()) {
       return;
     }
-
+  
     setIsSubmitting(true);
-
-    // Simulate form submission (replace with actual email service)
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError('');
+  
+    try {
+      // Create URL-encoded form data
+      const formPayload = new URLSearchParams();
+      formPayload.append('name', formData.name);
+      formPayload.append('email', formData.email);
+      formPayload.append('message', formData.message);
+      formPayload.append('timestamp', new Date().toISOString());
+  
+      // First try POST request
+      let response = await fetch(scriptUrl, {
+        method: 'POST',
+        body: formPayload,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+  
+      // If POST fails, try GET as fallback
+      if (!response.ok) {
+        const getUrl = `${scriptUrl}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&message=${encodeURIComponent(formData.message)}`;
+        response = await fetch(getUrl, {
+          method: 'GET',
+          mode: 'no-cors',
+        });
+      }
+  
       setIsSubmitted(true);
-      
-      // Reset form
       setFormData({
-        fullName: '',
+        name: '',
         email: '',
-        phone: '',
-        category: '',
         message: '',
       });
-    }, 2000);
+  
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitError('Failed to submit form. Please try again later or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
+  // ... (rest of your component remains the same)
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -98,38 +104,35 @@ function Inquiry() {
     }
   };
 
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen bg-gray-50 py-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-            <div className="mb-6">
-              <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                Inquiry Submitted Successfully!
-              </h2>
-              <p className="text-gray-600">
-                Thank you for your inquiry. We'll get back to you within 24 hours.
-              </p>
-            </div>
-            
-            <div className="bg-green-50 rounded-lg p-4 mb-6">
-              <p className="text-green-800 font-medium">
-                Your inquiry has been sent to: swarajgreenenergysge@gmail.com
-              </p>
-            </div>
-            
-            <button
-              onClick={() => setIsSubmitted(false)}
-              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-            >
-              Submit Another Inquiry
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const contactInfo = [
+    {
+      icon: <Phone className="h-6 w-6" />,
+      title: 'Phone',
+      content: '+91 87895 74430',
+      description: 'Call us for immediate assistance',
+      link: 'tel:+918789574430',
+    },
+    {
+      icon: <Mail className="h-6 w-6" />,
+      title: 'Email',
+      content: 'swarajgreenenergysge@gmail.com',
+      description: 'Send us your inquiries anytime',
+      link: 'mailto:swarajgreenenergysge@gmail.com',
+    },
+    {
+      icon: <MessageCircle className="h-6 w-6" />,
+      title: 'WhatsApp',
+      content: '+91 87895 74430',
+      description: 'Quick chat for instant responses',
+      link: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
+    },
+    {
+      icon: <MapPin className="h-6 w-6" />,
+      title: 'Location',
+      content: 'Ghaziabad, Uttar Pradesh, India',
+      description: 'Visit us for in-person consultation',
+    },
+  ];
 
   return (
     <div>
@@ -138,182 +141,254 @@ function Inquiry() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Make an Inquiry
+              Contact Us
             </h1>
             <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
-              Get detailed information and pricing for the bike parts you need. 
-              Fill out the form below and we'll respond promptly.
+              Get in touch with our team for all your bike parts needs. 
+              We're here to help you find the perfect solutions.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Full Name */}
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
-                    errors.fullName ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="Enter your full name"
-                />
-                {errors.fullName && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.fullName}
-                  </p>
-                )}
-              </div>
-
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="Enter your email address"
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.email}
-                  </p>
-                )}
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="Enter your phone number"
-                />
-                {errors.phone && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.phone}
-                  </p>
-                )}
-              </div>
-
-              {/* Category */}
-              <div>
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
-                  Part Category *
-                </label>
-                <select
-                  id="category"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
-                    errors.category ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                >
-                  <option value="">Select a category</option>
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-                {errors.category && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.category}
-                  </p>
-                )}
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="Please provide specific details about the parts you need, including model, brand, quantity, or any other relevant information..."
-                />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
-                    <AlertCircle className="h-4 w-4 mr-1" />
-                    {errors.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-green-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+      {/* Contact Info Cards */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {contactInfo.map((info, index) => (
+              <div
+                key={index}
+                className="text-center p-6 rounded-xl bg-gray-50 hover:bg-green-50 transition-colors"
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                    Submitting...
-                  </>
+                <div className="flex justify-center mb-4 text-green-600">
+                  {info.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {info.title}
+                </h3>
+                {info.link ? (
+                  <a
+                    href={info.link}
+                    target={info.link.startsWith('http') ? '_blank' : undefined}
+                    rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="font-medium text-gray-800 mb-1 hover:text-green-600 transition-colors block"
+                  >
+                    {info.content}
+                  </a>
                 ) : (
-                  <>
-                    Submit Inquiry
-                    <Send className="ml-2 h-5 w-5" />
-                  </>
+                  <p className="font-medium text-gray-800 mb-1">
+                    {info.content}
+                  </p>
                 )}
-              </button>
-            </form>
+                <p className="text-sm text-gray-600">
+                  {info.description}
+                </p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Contact Info */}
-          <div className="mt-8 bg-green-50 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Need Immediate Assistance?
-            </h3>
-            <div className="space-y-2 text-gray-700">
-              <p>
-                <strong>Phone:</strong> +91 87895 74430
-              </p>
-              <p>
-                <strong>Email:</strong> swarajgreenenergysge@gmail.com
-              </p>
-              <p>
-                <strong>Response Time:</strong> Within 24 hours
-              </p>
+      {/* Contact Form and Map */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Send us a Message
+              </h2>
+
+              {isSubmitted ? (
+                <div className="text-center py-8">
+                  <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    Message Sent Successfully!
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    Thank you for contacting us. We'll get back to you soon.
+                  </p>
+                  <button
+                    onClick={() => setIsSubmitted(false)}
+                    className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Name */}
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
+                        errors.name ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                      placeholder="Enter your name"
+                    />
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-600 flex items-center">
+                        <AlertCircle className="h-4 w-4 mr-1" />
+                        {errors.name}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
+                        errors.email ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                      placeholder="Enter your email"
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-600 flex items-center">
+                        <AlertCircle className="h-4 w-4 mr-1" />
+                        {errors.email}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
+                        errors.message ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                      placeholder="How can we help you?"
+                    />
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-red-600 flex items-center">
+                        <AlertCircle className="h-4 w-4 mr-1" />
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </button>
+
+                  {submitError && (
+                    <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-lg flex items-center">
+                      <AlertCircle className="h-5 w-5 mr-2" />
+                      {submitError}
+                    </div>
+                  )}
+                </form>
+              )}
+            </div>
+
+            {/* Map and Additional Info */}
+            <div className="space-y-8">
+              {/* Embedded Map */}
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    Our Location
+                  </h3>
+                </div>
+                <div className="h-64 bg-gray-200 flex items-center justify-center">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.54447442817!2d77.04417!3d28.669155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfce26ec085ef%3A0x441e32f4fa5002fb!2sGhaziabad%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1647875955739!5m2!1sen!2sin"
+                    width="100%"
+                    height="256"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Swaraj Green Energy Location"
+                  ></iframe>
+                </div>
+              </div>
+
+              {/* Quick Contact Options */}
+              <div className="bg-green-600 rounded-xl p-8 text-white">
+                <h3 className="text-xl font-semibold mb-4">
+                  Quick Contact Options
+                </h3>
+                <div className="space-y-4">
+                  <a
+                    href="tel:+918789574430"
+                    className="flex items-center space-x-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                  >
+                    <Phone className="h-5 w-5" />
+                    <div>
+                      <div className="font-medium">Call Now</div>
+                      <div className="text-sm text-green-100">+91 87895 74430</div>
+                    </div>
+                  </a>
+                  <a
+                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    <div>
+                      <div className="font-medium">WhatsApp</div>
+                      <div className="text-sm text-green-100">Instant messaging</div>
+                    </div>
+                  </a>
+                  <a
+                    href="mailto:swarajgreenenergysge@gmail.com"
+                    className="flex items-center space-x-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                  >
+                    <Mail className="h-5 w-5" />
+                    <div>
+                      <div className="font-medium">Email</div>
+                      <div className="text-sm text-green-100">Detailed inquiries</div>
+                    </div>
+                  </a>
+                </div>
+                
+                <div className="mt-6 pt-6 border-t border-white/20">
+                  <h4 className="font-semibold mb-2">Business Hours</h4>
+                  <div className="text-sm text-green-100 space-y-1">
+                    <div>Mon - Sat: 9:00 AM - 7:00 PM</div>
+                    <div>Sunday: 10:00 AM - 5:00 PM</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

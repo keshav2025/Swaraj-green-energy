@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap } from 'lucide-react';
-
+import logo from '../assets/selogo.jpeg'
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -23,8 +23,8 @@ function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="bg-green-600 p-2 rounded-lg">
-              <Zap className="h-8 w-8 text-white" />
+            <div className="  rounded-lg w-[60px] h-[60px] flex items-center justify-center">
+             <img  src={logo} alt="Logo" className="w-full h-full object-contain"/>
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">Swaraj Green Energy</h1>

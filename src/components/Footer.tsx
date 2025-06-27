@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Zap, Facebook, Twitter, Instagram, Linkedin, MessageCircle } from 'lucide-react';
-
+import { Phone, Mail, MapPin, Zap, Facebook, Twitter, Youtube, Linkedin, MessageCircle } from 'lucide-react';
+import logo from '../assets/selogo.jpeg'
 function Footer() {
   const quickLinks = [
     { name: 'Home', path: '/' },
@@ -20,9 +20,9 @@ function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="bg-green-600 p-2 rounded-lg">
-                <Zap className="h-8 w-8 text-white" />
-              </div>
+            <div className="  rounded-lg w-[40px] h-[40px] flex items-center justify-center">
+             <img  src={logo} alt="Logo" className="w-full h-full object-contain"/>
+            </div>
               <div>
                 <h3 className="text-xl font-bold">Swaraj Green Energy</h3>
                 <p className="text-green-400">Premium Bike Parts Supplier</p>
@@ -47,7 +47,7 @@ function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-green-400" />
-                <span>Ghaziabad, Uttar Pradesh, India</span>
+                <span>Gautam Budh Nagar Uttar Pradesh India</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MessageCircle className="h-5 w-5 text-green-400" />
@@ -112,14 +112,14 @@ function Footer() {
             <div className="mt-6">
               <h5 className="text-sm font-semibold mb-3">Follow Us</h5>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-300 hover:text-green-400 transition-colors">
+                <a href="https://www.facebook.com/profile.php?id=61573976670721" className="text-gray-300 hover:text-green-400 transition-colors">
                   <Facebook className="h-6 w-6" />
                 </a>
                 <a href="#" className="text-gray-300 hover:text-green-400 transition-colors">
                   <Twitter className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-green-400 transition-colors">
-                  <Instagram className="h-6 w-6" />
+                <a href="https://www.youtube.com/@r.digitalearning" className="text-gray-300 hover:text-green-400 transition-colors">
+                  <Youtube className="h-6 w-6" />
                 </a>
                 <a href="#" className="text-gray-300 hover:text-green-400 transition-colors">
                   <Linkedin className="h-6 w-6" />
