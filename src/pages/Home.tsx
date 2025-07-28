@@ -51,22 +51,22 @@ import n8 from '../assets/WhatsApp Image 2025-06-20 at 01.35.12.jpeg' ;
 function Home() {
   const features = [
     {
-      icon: <Shield className="h-8 w-8 text-green-600" />,
+      icon: <Shield className="h-8 w-8 text-blue-600" />,
       title: 'Quality Assurance',
       description: 'All parts undergo rigorous quality checks to ensure reliability and performance.',
     },
     {
-      icon: <Clock className="h-8 w-8 text-green-600" />,
+      icon: <Clock className="h-8 w-8 text-blue-600" />,
       title: 'Fast Response',
       description: 'Quick inquiry processing and prompt responses to all customer requests.',
     },
     {
-      icon: <Users className="h-8 w-8 text-green-600" />,
+      icon: <Users className="h-8 w-8 text-blue-600" />,
       title: 'Expert Support',
       description: 'Professional guidance from our experienced team of bike parts specialists.',
     },
     {
-      icon: <Wrench className="h-8 w-8 text-green-600" />,
+      icon: <Wrench className="h-8 w-8 text-blue-600" />,
       title: 'Wide Selection',
       description: 'Comprehensive range of parts for all major motorcycle brands and models.',
     },
@@ -109,22 +109,22 @@ function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-blue-800 to-blue-500 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 Premium Bike Parts
-                <span className="block text-green-200">Supplier in Ghaziabad</span>
+                <span className="block text-blue-200">Supplier in Ghaziabad</span>
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-green-100">
+              <p className="text-xl md:text-2xl mb-8 text-blue-100">
                 Your trusted partner for high-quality motorcycle parts. We specialize in providing 
                 reliable components with exceptional service and competitive pricing.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/catalog"
-                  className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors inline-flex items-center justify-center"
+                  className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
                 >
                   Browse Parts Catalog
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -132,7 +132,7 @@ function Home() {
                 <div className="flex gap-2">
                   <Link
                     to="/inquiry"
-                    className="border-2 border-white text-white px-6 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors inline-flex items-center justify-center flex-1"
+                    className="border-2 border-white text-white px-6 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center flex-1"
                   >
                     Email Inquiry
                     <Phone className="ml-2 h-5 w-5" />
@@ -141,7 +141,7 @@ function Home() {
                     href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border-2 border-white text-white px-6 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors inline-flex items-center justify-center flex-1"
+                    className="border-2 border-white text-white px-6 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center flex-1"
                   >
                     WhatsApp
                     <MessageCircle className="ml-2 h-5 w-5" />
@@ -154,8 +154,8 @@ function Home() {
             <div className="relative">
               
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-green-400 rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-green-300 rounded-full opacity-15 animate-pulse delay-1000"></div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-400 rounded-full opacity-20 animate-pulse"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-300 rounded-full opacity-15 animate-pulse delay-1000"></div>
             </div>
           </div>
         </div>
@@ -211,14 +211,14 @@ function Home() {
               <div className="space-y-3 mb-8">
                 {whyChooseUs.slice(0, 4).map((item, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{item}</span>
                   </div>
                 ))}
               </div>
               <Link
                 to="/about"
-                className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center"
               >
                 Learn More About Us
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -226,7 +226,7 @@ function Home() {
             </div>
 
             <div className="relative">
-              <div className="bg-green-600 rounded-2xl p-8 text-white">
+              <div className="bg-blue-600 rounded-2xl p-8 text-white">
                 <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
                 <p className="mb-6">
                   Contact us today for all your bike parts requirements. 
@@ -238,14 +238,14 @@ function Home() {
                     <span className="font-semibold">+91 87895 74430</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <span className="text-green-200">Email:</span>
+                    <span className="text-blue-200">Email:</span>
                     <span>swarajgreenenergysge@gmail.com</span>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   <a
                     href="mailto:swarajgreenenergysge@gmail.com"
-                    className="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold hover:bg-green-50 transition-colors inline-flex items-center text-sm"
+                    className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center text-sm"
                   >
                     Email Us
                   </a>
@@ -253,7 +253,7 @@ function Home() {
                     href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-400 transition-colors inline-flex items-center text-sm"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-400 transition-colors inline-flex items-center text-sm"
                   >
                     <MessageCircle className="mr-2 h-4 w-4" />
                     WhatsApp
@@ -294,7 +294,7 @@ function Home() {
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-500 flex items-center justify-center">
           <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
             <p className="text-white text-center font-semibold text-lg">{image.title}</p>
-            <p className="text-green-300 text-sm text-center">{image.category}</p>
+            <p className="text-blue-300 text-sm text-center">{image.category}</p>
           </div>
         </div>
       </div>
@@ -304,18 +304,18 @@ function Home() {
 
 
       {/* CTA Section */}
-      <section className="py-16 bg-green-600 text-white">
+      <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Need Quality Bike Parts?
           </h2>
-          <p className="text-xl mb-8 text-green-100">
+          <p className="text-xl mb-8 text-blue-100">
             Submit an inquiry today and let our experts help you find the perfect parts for your motorcycle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/inquiry"
-              className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors inline-flex items-center text-lg"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center text-lg"
             >
               Make an Email Inquiry
               <ArrowRight className="ml-2 h-6 w-6" />
@@ -324,7 +324,7 @@ function Home() {
               href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-400 transition-colors inline-flex items-center text-lg"
+              className="bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors inline-flex items-center text-lg"
             >
               <MessageCircle className="mr-2 h-6 w-6" />
               WhatsApp Inquiry

@@ -28,7 +28,7 @@ function Header() {
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">Swaraj Green Energy</h1>
-              <p className="text-sm text-green-600">Premium Bike Parts</p>
+              <p className="text-sm text-blue-600">Premium Bike Parts</p>
             </div>
           </Link>
 
@@ -40,8 +40,8 @@ function Header() {
                 to={item.path}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActivePath(item.path)
-                    ? 'text-green-600 bg-green-50'
-                    : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                 }`}
               >
                 {item.name}
@@ -52,7 +52,7 @@ function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-green-50 transition-colors"
+            className="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -69,8 +69,8 @@ function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className={`px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     isActivePath(item.path)
-                      ? 'text-green-600 bg-green-50'
-                      : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                   }`}
                 >
                   {item.name}

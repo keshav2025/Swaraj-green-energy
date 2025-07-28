@@ -15,13 +15,13 @@ function About() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               About Swaraj Green Energy
             </h1>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
               Your trusted partner for premium motorcycle parts in Ghaziabad, 
               Uttar Pradesh, committed to quality and exceptional service.
             </p>
@@ -40,10 +40,10 @@ function About() {
                 <img
                   src={ownerImg}
                   alt="Rishabh Kumar"
-                  className="w-48 h-48 rounded-full object-cover border-4 border-green-200 shadow mb-4"
+                  className="w-48 h-48 rounded-full object-cover border-4 border-blue-200 shadow mb-4"
                 />
                 <div className="text-2xl font-bold text-gray-900">Ravish Kumar</div>
-                <div className="text-green-600 font-medium">Founder</div>
+                <div className="text-blue-600 font-medium">Founder</div>
               </div>
 
               {/* Co-Founder */}
@@ -51,10 +51,10 @@ function About() {
                 <img
                   src={cofounderImg}
                   alt="Co-Founder Name"
-                  className="w-48 h-48 rounded-full object-cover border-4 border-green-200 shadow mb-4"
+                  className="w-48 h-48 rounded-full object-cover border-4 border-blue-200 shadow mb-4"
                 />
                 <div className="text-2xl font-bold text-gray-900">AMAR</div>
-                <div className="text-green-600 font-medium">Co-Founder</div>
+                <div className="text-blue-600 font-medium">Co-Founder</div>
               </div>
             </div>
 

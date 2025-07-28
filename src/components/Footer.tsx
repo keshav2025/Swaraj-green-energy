@@ -25,7 +25,7 @@ function Footer() {
             </div>
               <div>
                 <h3 className="text-xl font-bold">Swaraj Green Energy</h3>
-                <p className="text-green-400">Premium Bike Parts Supplier</p>
+                <p className="text-blue-400">Premium Bike Parts Supplier</p>
               </div>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
@@ -34,28 +34,28 @@ function Footer() {
             </p>
             <div className="space-y-2">
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-green-400" />
-                <a href="tel:+918789574430" className="hover:text-green-400 transition-colors">
+                <Phone className="h-5 w-5 text-blue-400" />
+                <a href="tel:+918789574430" className="hover:text-blue-400 transition-colors">
                   +91 87895 74430
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-green-400" />
-                <a href="mailto:swarajgreenenergysge@gmail.com" className="hover:text-green-400 transition-colors">
+                <Mail className="h-5 w-5 text-blue-400" />
+                <a href="mailto:swarajgreenenergysge@gmail.com" className="hover:text-blue-400 transition-colors">
                   swarajgreenenergysge@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-green-400" />
+                <MapPin className="h-5 w-5 text-blue-400" />
                 <span>Gautam Budh Nagar Uttar Pradesh India</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MessageCircle className="h-5 w-5 text-green-400" />
+                <MessageCircle className="h-5 w-5 text-blue-400" />
                 <a 
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-green-400 transition-colors"
+                  className="hover:text-blue-400 transition-colors"
                 >
                   WhatsApp: +91 87895 74430
                 </a>
@@ -71,7 +71,7 @@ function Footer() {
                 <li key={link.name}>
                   <Link 
                     to={link.path} 
-                    className="text-gray-300 hover:text-green-400 transition-colors"
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -86,7 +86,7 @@ function Footer() {
             <div className="space-y-3">
               <a
                 href="mailto:swarajgreenenergysge@gmail.com"
-                className="flex items-center space-x-2 text-gray-300 hover:text-green-400 transition-colors"
+                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 <Mail className="h-5 w-5" />
                 <span>Email Us</span>
@@ -95,14 +95,14 @@ function Footer() {
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-gray-300 hover:text-green-400 transition-colors"
+                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 <MessageCircle className="h-5 w-5" />
                 <span>WhatsApp</span>
               </a>
               <a
                 href="tel:+918789574430"
-                className="flex items-center space-x-2 text-gray-300 hover:text-green-400 transition-colors"
+                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 <Phone className="h-5 w-5" />
                 <span>Call Us</span>
@@ -112,18 +112,18 @@ function Footer() {
             <div className="mt-6">
               <h5 className="text-sm font-semibold mb-3">Follow Us</h5>
               <div className="flex space-x-4">
-                <a href="https://www.facebook.com/profile.php?id=61573976670721" className="text-gray-300 hover:text-green-400 transition-colors">
+                <a href="https://www.facebook.com/profile.php?id=61573976670721" className="text-gray-300 hover:text-blue-400 transition-colors">
                   <Facebook className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-green-400 transition-colors">
+                {/* <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
                   <Twitter className="h-6 w-6" />
-                </a>
-                <a href="https://www.youtube.com/@r.digitalearning" className="text-gray-300 hover:text-green-400 transition-colors">
+                </a> */}
+                <a href="https://www.youtube.com/@r.digitalearning" className="text-gray-300 hover:text-blue-400 transition-colors">
                   <Youtube className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-green-400 transition-colors">
+                {/* <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
                   <Linkedin className="h-6 w-6" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
@@ -134,7 +134,14 @@ function Footer() {
           <p className="text-gray-400">
             © 2024 Swaraj Green Energy. All rights reserved.
           </p>
+            <div className="flex items-center space-x-2 text-gray-400 mb-4 md:mb-0">
+              
+             
+              
+             <a href="https://portfolio-murex-seven-10.vercel.app/"><span>Made by Keshav</span></a>
+            </div>
         </div>
+        
       </div>
     </footer>
   );

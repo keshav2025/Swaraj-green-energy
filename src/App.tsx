@@ -9,11 +9,12 @@ import Inquiry from './pages/Inquiry';
 import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import ScrollToTop from './pages/ScrollToTop'; // 👈 import this
+import Wtbtn from './components/wtbtn'
 
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* 👈 insert here */}
+      <ScrollToTop /> 
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <Header />
         <main className="flex-grow">
@@ -27,6 +28,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <Wtbtn/>
       </div>
     </Router>
   );

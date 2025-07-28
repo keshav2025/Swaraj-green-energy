@@ -80,18 +80,18 @@ function Catalog() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Bike Parts Catalog
             </h1>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto mb-8">
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
               Explore our comprehensive range of high-quality motorcycle parts. 
               All items are available for inquiry - contact us for pricing and availability.
             </p>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-md mx-auto">
-              <div className="flex items-center space-x-3 text-green-100">
+              <div className="flex items-center space-x-3 text-blue-100">
                 <Search className="h-5 w-5" />
                 <span>Need a specific part? Contact us for personalized assistance.</span>
               </div>
@@ -101,9 +101,9 @@ function Catalog() {
       </section>
 
       {/* Notice Section */}
-      <section className="bg-green-50 py-8">
+      <section className="bg-blue-50 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg p-6 border-l-4 border-green-600">
+          <div className="bg-white rounded-lg p-6 border-l-4 border-blue-600">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Inquiry-Based Service
             </h3>
@@ -142,7 +142,7 @@ function Catalog() {
                     {category.description}
                   </p>
                   
-                  <div className="mb-6">
+                  {/* <div className="mb-6">
                     <h4 className="text-sm font-semibold text-gray-700 mb-2">
                       Available Parts:
                     </h4>
@@ -150,7 +150,7 @@ function Catalog() {
                       {category.parts.slice(0, 4).map((part, partIndex) => (
                         <span
                           key={partIndex}
-                          className="px-2 py-1 bg-green-50 text-green-600 text-xs rounded-full"
+                          className="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-full"
                         >
                           {part}
                         </span>
@@ -161,13 +161,13 @@ function Catalog() {
                         </span>
                       )}
                     </div>
-                  </div>
+                  </div> */}
                   
                   <div className="flex gap-2">
                     <Link
                       to="/inquiry"
                       state={{ category: category.name }}
-                      className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center justify-center text-sm"
+                      className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center text-sm"
                     >
                       Email Inquiry
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -176,7 +176,7 @@ function Catalog() {
                       href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(getWhatsAppMessage(category.name))}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-green-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-400 transition-colors inline-flex items-center justify-center text-sm"
+                      className="flex-1 bg-blue-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors inline-flex items-center justify-center text-sm"
                     >
                       <MessageCircle className="mr-2 h-4 w-4" />
                       WhatsApp
@@ -202,7 +202,7 @@ function Catalog() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/inquiry"
-              className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center justify-center"
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center"
             >
               Submit Custom Email Inquiry
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -211,14 +211,14 @@ function Catalog() {
               href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi! I need help finding specific bike parts. Can you assist me?")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-400 transition-colors inline-flex items-center justify-center"
+              className="bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors inline-flex items-center justify-center"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               WhatsApp Us Directly
             </a>
             <Link
               to="/contact"
-              className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition-colors inline-flex items-center justify-center"
+              className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors inline-flex items-center justify-center"
             >
               Contact Us Directly
             </Link>

@@ -124,13 +124,13 @@ function FAQ() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
               Find answers to common questions about our bike parts, services, 
               and ordering process. Can't find what you're looking for? Contact us!
             </p>
@@ -144,7 +144,7 @@ function FAQ() {
           <div className="space-y-8">
             {faqCategories.map((category, categoryIndex) => (
               <div key={categoryIndex} className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="bg-green-600 text-white p-6">
+                <div className="bg-blue-600 text-white p-6">
                   <div className="flex items-center space-x-3">
                     {category.icon}
                     <h2 className="text-2xl font-bold">{category.title}</h2>
@@ -167,9 +167,9 @@ function FAQ() {
                               {item.question}
                             </h3>
                             {isOpen ? (
-                              <ChevronUp className="h-5 w-5 text-green-600 flex-shrink-0" />
+                              <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0" />
                             ) : (
-                              <ChevronDown className="h-5 w-5 text-green-600 flex-shrink-0" />
+                              <ChevronDown className="h-5 w-5 text-blue-600 flex-shrink-0" />
                             )}
                           </div>
                         </button>
@@ -192,26 +192,26 @@ function FAQ() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-green-600 text-white">
+      <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Still Have Questions?
           </h2>
-          <p className="text-xl mb-8 text-green-100 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
             Our team is here to help! Contact us for personalized assistance 
             with your bike parts requirements.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+918789574430"
-              className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors inline-flex items-center justify-center"
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
             >
               <HelpCircle className="mr-2 h-5 w-5" />
               Call +91 87895 74430
             </a>
             <a
               href="mailto:swarajgreenenergysge@gmail.com"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors inline-flex items-center justify-center"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center"
             >
               Send Email
             </a>

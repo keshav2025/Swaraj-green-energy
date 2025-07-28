@@ -137,13 +137,13 @@ function Inquiry() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Contact Us
             </h1>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
               Get in touch with our team for all your bike parts needs. 
               We're here to help you find the perfect solutions.
             </p>
@@ -158,9 +158,9 @@ function Inquiry() {
             {contactInfo.map((info, index) => (
               <div
                 key={index}
-                className="text-center p-6 rounded-xl bg-gray-50 hover:bg-green-50 transition-colors"
+                className="text-center p-6 rounded-xl bg-gray-50 hover:bg-blue-50 transition-colors"
               >
-                <div className="flex justify-center mb-4 text-green-600">
+                <div className="flex justify-center mb-4 text-blue-600">
                   {info.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -171,7 +171,7 @@ function Inquiry() {
                     href={info.link}
                     target={info.link.startsWith('http') ? '_blank' : undefined}
                     rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="font-medium text-gray-800 mb-1 hover:text-green-600 transition-colors block"
+                    className="font-medium text-gray-800 mb-1 hover:text-blue-600 transition-colors block"
                   >
                     {info.content}
                   </a>
@@ -201,7 +201,7 @@ function Inquiry() {
 
               {isSubmitted ? (
                 <div className="text-center py-8">
-                  <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                  <CheckCircle className="h-16 w-16 text-blue-600 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     Message Sent Successfully!
                   </h3>
@@ -210,7 +210,7 @@ function Inquiry() {
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                    className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                   >
                     Send Another Message
                   </button>
@@ -228,7 +228,7 @@ function Inquiry() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
                         errors.name ? 'border-red-500' : 'border-gray-300'
                       }`}
                       placeholder="Enter your name"
@@ -252,7 +252,7 @@ function Inquiry() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
                         errors.email ? 'border-red-500' : 'border-gray-300'
                       }`}
                       placeholder="Enter your email"
@@ -276,7 +276,7 @@ function Inquiry() {
                       rows={5}
                       value={formData.message}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
                         errors.message ? 'border-red-500' : 'border-gray-300'
                       }`}
                       placeholder="How can we help you?"
@@ -293,7 +293,7 @@ function Inquiry() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <>
@@ -342,7 +342,7 @@ function Inquiry() {
               </div>
 
               {/* Quick Contact Options */}
-              <div className="bg-green-600 rounded-xl p-8 text-white">
+              <div className="bg-blue-600 rounded-xl p-8 text-white">
                 <h3 className="text-xl font-semibold mb-4">
                   Quick Contact Options
                 </h3>
@@ -354,7 +354,7 @@ function Inquiry() {
                     <Phone className="h-5 w-5" />
                     <div>
                       <div className="font-medium">Call Now</div>
-                      <div className="text-sm text-green-100">+91 87895 74430</div>
+                      <div className="text-sm text-blue-100">+91 87895 74430</div>
                     </div>
                   </a>
                   <a
@@ -366,7 +366,7 @@ function Inquiry() {
                     <MessageCircle className="h-5 w-5" />
                     <div>
                       <div className="font-medium">WhatsApp</div>
-                      <div className="text-sm text-green-100">Instant messaging</div>
+                      <div className="text-sm text-blue-100">Instant messaging</div>
                     </div>
                   </a>
                   <a
@@ -376,14 +376,14 @@ function Inquiry() {
                     <Mail className="h-5 w-5" />
                     <div>
                       <div className="font-medium">Email</div>
-                      <div className="text-sm text-green-100">Detailed inquiries</div>
+                      <div className="text-sm text-blue-100">Detailed inquiries</div>
                     </div>
                   </a>
                 </div>
                 
                 <div className="mt-6 pt-6 border-t border-white/20">
                   <h4 className="font-semibold mb-2">Business Hours</h4>
-                  <div className="text-sm text-green-100 space-y-1">
+                  <div className="text-sm text-blue-100 space-y-1">
                     <div>Mon - Sat: 9:00 AM - 7:00 PM</div>
                     <div>Sunday: 10:00 AM - 5:00 PM</div>
                   </div>
